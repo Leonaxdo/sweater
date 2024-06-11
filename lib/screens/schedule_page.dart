@@ -18,7 +18,7 @@ class _SchedulePageState extends State<SchedulePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('SweaterProject'),
+        title: Text('Sweater'),
       ),
       body: Column(
         children: [
