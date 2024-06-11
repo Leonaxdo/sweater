@@ -62,6 +62,12 @@
       "languageVersion": "3.2"
     },
     {
+      "name": "intl",
+      "rootUri": "file:///Users/leo/.pub-cache/hosted/pub.dev/intl-0.19.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
       "name": "lints",
       "rootUri": "file:///Users/leo/.pub-cache/hosted/pub.dev/lints-2.1.1",
       "packageUri": "lib/",
@@ -86,8 +92,26 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "nested",
+      "rootUri": "file:///Users/leo/.pub-cache/hosted/pub.dev/nested-1.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "path",
       "rootUri": "file:///Users/leo/.pub-cache/hosted/pub.dev/path-1.8.3",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "provider",
+      "rootUri": "file:///Users/leo/.pub-cache/hosted/pub.dev/provider-6.1.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "simple_gesture_detector",
+      "rootUri": "file:///Users/leo/.pub-cache/hosted/pub.dev/simple_gesture_detector-0.2.1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -122,6 +146,12 @@
       "languageVersion": "2.18"
     },
     {
+      "name": "table_calendar",
+      "rootUri": "file:///Users/leo/.pub-cache/hosted/pub.dev/table_calendar-3.1.2",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
       "name": "term_glyph",
       "rootUri": "file:///Users/leo/.pub-cache/hosted/pub.dev/term_glyph-1.2.1",
       "packageUri": "lib/",
@@ -152,7 +182,7 @@
       "languageVersion": "3.2"
     }
   ],
-  "generated": "2024-06-11T14:05:47.326088Z",
+  "generated": "2024-06-11T14:10:18.488199Z",
   "generator": "pub",
   "generatorVersion": "3.2.2"
 }
