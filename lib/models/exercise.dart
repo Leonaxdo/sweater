@@ -25,4 +25,14 @@ class Exercise {
       sets: setsList,
     );
   }
+
+  int getCheckedTotalWeight() {
+    int totalWeight = 0;
+    for (var set in sets) {
+      if (set.completed) {
+        totalWeight += set.weight * set.reps;
+      }
+    }
+    return totalWeight;
+  }
 }

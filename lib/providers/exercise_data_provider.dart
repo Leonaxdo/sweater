@@ -34,7 +34,7 @@ class ExerciseDataProvider extends ChangeNotifier {
     String jsonExercises = jsonEncode(_exercisesByDate.map((key, value) {
       return MapEntry(key, value.map((e) => e.toJson()).toList());
     }));
-    prefs.setString('exercisesByDate', jsonExercises);
+    await prefs.setString('exercisesByDate', jsonExercises);
   }
 
   void _loadExercises() async {

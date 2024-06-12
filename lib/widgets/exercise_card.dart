@@ -45,90 +45,86 @@ class _ExerciseCardState extends State<ExerciseCard> {
   @override
   Widget build(BuildContext context) {
     return Card(
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              widget.exercise.name,
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            ),
-            ListView.builder(
-              shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
-              itemCount: widget.exercise.sets.length,
-              itemBuilder: (context, index) {
-                final set = widget.exercise.sets[index];
-                return ListTile(
-                  title: Row(
-                    children: [
-                      Expanded(
-                        child: TextFormField(
-                          initialValue: set.weight.toString(),
-                          decoration: InputDecoration(labelText: '무게 (kg)'),
-                          keyboardType: TextInputType.number,
-                          onChanged: (value) {
-                            setState(() {
-                              set.weight = int.tryParse(value) ?? set.weight;
-                              _calculateTotalWeight();
-                            });
-                          },
-                        ),
-                      ),
-                      SizedBox(width: 10),
-                      Expanded(
-                        child: TextFormField(
-                          initialValue: set.reps.toString(),
-                          decoration: InputDecoration(labelText: '횟수'),
-                          keyboardType: TextInputType.number,
-                          onChanged: (value) {
-                            setState(() {
-                              set.reps = int.tryParse(value) ?? set.reps;
-                              _calculateTotalWeight();
-                            });
-                          },
-                        ),
-                      ),
-                      Checkbox(
-                        value: set.completed,
-                        onChanged: (bool? value) {
+      child: ExpansionTile(
+        title: Text(
+          widget.exercise.name,
+          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+        ),
+        children: [
+          ListView.builder(
+            shrinkWrap: true,
+            physics: NeverScrollableScrollPhysics(),
+            itemCount: widget.exercise.sets.length,
+            itemBuilder: (context, index) {
+              final set = widget.exercise.sets[index];
+              return ListTile(
+                title: Row(
+                  children: [
+                    Expanded(
+                      child: TextFormField(
+                        initialValue: set.weight.toString(),
+                        decoration: InputDecoration(labelText: '무게 (kg)'),
+                        keyboardType: TextInputType.number,
+                        onChanged: (value) {
                           setState(() {
-                            set.completed = value ?? false;
+                            set.weight = int.tryParse(value) ?? set.weight;
                             _calculateTotalWeight();
                           });
                         },
                       ),
-                    ],
-                  ),
-                  trailing: IconButton(
-                    icon: Icon(Icons.delete),
-                    onPressed: () {
-                      _removeSet(index);
-                    },
-                  ),
-                );
-              },
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                TextButton(
-                  onPressed: _addSet,
-                  child: Text('세트 추가'),
+                    ),
+                    SizedBox(width: 10),
+                    Expanded(
+                      child: TextFormField(
+                        initialValue: set.reps.toString(),
+                        decoration: InputDecoration(labelText: '횟수'),
+                        keyboardType: TextInputType.number,
+                        onChanged: (value) {
+                          setState(() {
+                            set.reps = int.tryParse(value) ?? set.reps;
+                            _calculateTotalWeight();
+                          });
+                        },
+                      ),
+                    ),
+                    Checkbox(
+                      value: set.completed,
+                      onChanged: (bool? value) {
+                        setState(() {
+                          set.completed = value ?? false;
+                          _calculateTotalWeight();
+                        });
+                      },
+                    ),
+                  ],
                 ),
-                TextButton(
+                trailing: IconButton(
+                  icon: Icon(Icons.delete),
                   onPressed: () {
-                    if (widget.exercise.sets.isNotEmpty) {
-                      _removeSet(widget.exercise.sets.length - 1);
-                    }
+                    _removeSet(index);
                   },
-                  child: Text('세트 삭제'),
                 ),
-              ],
-            ),
-          ],
-        ),
+              );
+            },
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              TextButton(
+                onPressed: _addSet,
+                child: Text('세트 추가'),
+              ),
+              TextButton(
+                onPressed: () {
+                  if (widget.exercise.sets.isNotEmpty) {
+                    _removeSet(widget.exercise.sets.length - 1);
+                  }
+                },
+                child: Text('세트 삭제'),
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }
